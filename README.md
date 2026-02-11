@@ -16,8 +16,6 @@ SAM3 Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 |--------|-------|-----|-----|-----|-----|------|-------|
 | **OV-SCAN SC-NOD** | OV-SCAN (ICCV 2025) | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
 | **OpenSight (temporal+spatial)** | OpenSight (ECCV 2024) | **21.53%** | **23.47%** | 21.9% | 41.0% | **55.5%** | ~1.3s/sample |
-| OpenSight (baseline) | OpenSight (ECCV 2024) | 17.94% | 22.01% | 20.3% | 34.0% | 39.1% | ~1.3s/sample |
-| OV-SCAN UltraFast | OV-SCAN (ICCV 2025) | 17.00% | 21.10% | 26.8% | 24.5% | 12.7% | ~4s/sample |
 
 Pre-computed submissions included in `results/submissions/`.
 
