@@ -12,10 +12,10 @@ SAM3 Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 
 ## Results (NuScenes v1.0-mini, mini_train)
 
-| Method | Paper | mAP | NDS | car | ped | cone | Speed |
-|--------|-------|-----|-----|-----|-----|------|-------|
-| **OV-SCAN SC-NOD** | OV-SCAN (ICCV 2025) | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
-| **OpenSight (temporal+spatial)** | OpenSight (ECCV 2024) | **21.53%** | **23.47%** | 21.9% | 41.0% | **55.5%** | ~1.3s/sample |
+| Method | mAP | NDS | car | ped | cone | Speed |
+|--------|-----|-----|-----|-----|------|-------|
+| **OV-SCAN SC-NOD** | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
+| **OpenSight** | 21.53% | 23.47% | 21.9% | 41.0% | **55.5%** | ~1.3s/sample |
 
 Pre-computed submissions included in `results/submissions/`.
 
