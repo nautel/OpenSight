@@ -6,7 +6,7 @@ Non-official implementation of [OpenSight (ECCV 2024)](https://www.ecva.net/pape
 > Hu Zhang et al. | [Paper](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/11118.pdf) | [Official Code](https://github.com/huzhangcs/OpenSight)
 
 ```
-SAM3 Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
+Image Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 -> Ground Filter -> 3D NMS -> Temporal Fusion -> Spatial Awareness -> Submission JSON
 ```
 
@@ -17,15 +17,17 @@ SAM3 Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 | **[OV-SCAN SC-NOD](https://github.com/nautel/OVSCAN)** | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
 | **[OpenSight](https://github.com/nautel/OpenSight)** | 21.53% | 23.47% | 21.9% | 41.0% | **55.5%** | ~1.3s/sample |
 
-Pre-computed submissions included in `results/submissions/`.
+Pre-computed submission files (.json) are included in `results/submissions/`.
 
 ## Algorithm (Paper Section 3.2)
 
 1. **2D Detection + Frustum Extraction**: Camera images -> SAM3 masks -> project LiDAR to image -> extract points in mask (Eq. 1)
 2. **Region Growing**: Isolate cluster with densest LiDAR points (spatial proximity, KDTree + BFS)
 3. **Extremal BBox Fitting**: ConvexHull + minimum area rectangle, anchor blending, PCA yaw
-4. **Temporal Awareness**: Project boxes from frame t+-1 to t via ego-motion. Scenario A: no IoU match -> add missed detection. Scenario B: overlap + distant -> union box
-5. **Spatial Awareness**: LLM size priors (Eq. 2) -> Object Bank -> random placement at varying distances with sampling ratio (Eq. 3)
+4. **Temporal Awareness**: Project boxes from frame t+-1 to t via ego-motion.
+   - Scenario A: no IoU match -> add missed detection.
+   - Scenario B: overlap + distant -> union box
+6. **Spatial Awareness**: LLM size priors (Eq. 2) -> Object Bank -> random placement at varying distances with sampling ratio (Eq. 3)
 
 ## Setup
 
@@ -47,7 +49,7 @@ pip install nuscenes-devkit
 
 **What's included in this repo (no extra downloads needed besides NuScenes raw data):**
 - `data/nuscenes/*.pkl` -- mmdetection3d info files (train + val)
-- `data/sam3_masks/` -- Compressed SAM3 masks for all 323 train + 1 val samples (26MB, 500x compressed)
+- `data/sam3_masks/` -- Compressed SAM3 masks for all 323 train + 1 val samples
 
 ## Quick Start
 
@@ -104,7 +106,7 @@ This package is structured identically to [Implement_OVSCAN](https://github.com/
 | Temporal | Cross-frame projection + missed recovery | None |
 | Spatial | Object Bank + augmentation | None |
 | Best mAP | 21.53% | 24.40% |
-| Speed | ~4.3s/sample | ~27s/sample (PSO) |
+| Speed | ~1.3s/sample | ~27s/sample |
 
 ## Citation
 
