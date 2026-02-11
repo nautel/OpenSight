@@ -15,10 +15,11 @@ SAM3 Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 | Method | Paper | mAP | NDS | car | ped | cone | Speed |
 |--------|-------|-----|-----|-----|-----|------|-------|
 | **OV-SCAN SC-NOD** | OV-SCAN (ICCV 2025) | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
-| **OpenSight** | OpenSight (ECCV 2024) | 20.14% | 22.35% | 20.6% | 36.9% | **53.1%** | ~4.3s/sample |
+| **OpenSight (temporal+spatial)** | OpenSight (ECCV 2024) | **21.53%** | **23.47%** | 21.9% | 41.0% | **55.5%** | ~1.3s/sample |
+| OpenSight (baseline) | OpenSight (ECCV 2024) | 17.94% | 22.01% | 20.3% | 34.0% | 39.1% | ~1.3s/sample |
 | OV-SCAN UltraFast | OV-SCAN (ICCV 2025) | 17.00% | 21.10% | 26.8% | 24.5% | 12.7% | ~4s/sample |
 
-Pre-computed submission included in `results/submissions/`.
+Pre-computed submissions included in `results/submissions/`.
 
 ## Algorithm (Paper Section 3.2)
 
@@ -66,7 +67,7 @@ python -m OpenSight --split train
 
 # Evaluate pre-computed results
 python -m OpenSight.evaluate \
-    --result_path results/submissions/opensight_mAP20.14_NDS22.35.json \
+    --result_path results/submissions/opensight_mAP21.53_NDS23.47.json \
     --version v1.0-mini --eval_set mini_train --verbose
 ```
 
@@ -104,7 +105,7 @@ This package is structured identically to [Implement_OVSCAN](https://github.com/
 | BBox Fitting | Extremal (ConvexHull + min area rect) | SC-NOD PSO / UltraFast grid search |
 | Temporal | Cross-frame projection + missed recovery | None |
 | Spatial | Object Bank + augmentation | None |
-| Best mAP | 20.14% | 24.40% |
+| Best mAP | 21.53% | 24.40% |
 | Speed | ~4.3s/sample | ~27s/sample (PSO) |
 
 ## Citation
@@ -117,6 +118,11 @@ This package is structured identically to [Implement_OVSCAN](https://github.com/
     year={2024}
 }
 ```
+
+## Contributors
+
+- [nautel](https://github.com/nautel) - Implementation and experiments
+- [Claude Code](https://claude.ai/code) (Anthropic) - Code review, testing, and deployment
 
 ## License
 
