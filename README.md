@@ -19,16 +19,6 @@ Image Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 
 Pre-computed submission files (.json) are included in `results/submissions/`.
 
-## Algorithm (Paper Section 3.2)
-
-1. **2D Detection + Frustum Extraction**: Camera images -> SAM3 masks -> project LiDAR to image -> extract points in mask (Eq. 1)
-2. **Region Growing**: Isolate cluster with densest LiDAR points (spatial proximity, KDTree + BFS)
-3. **Extremal BBox Fitting**: ConvexHull + minimum area rectangle, anchor blending, PCA yaw
-4. **Temporal Awareness**: Project boxes from frame t+-1 to t via ego-motion.
-   - Scenario A: no IoU match -> add missed detection.
-   - Scenario B: overlap + distant -> union box
-6. **Spatial Awareness**: LLM size priors (Eq. 2) -> Object Bank -> random placement at varying distances with sampling ratio (Eq. 3)
-
 ## Setup
 
 ```bash
@@ -114,11 +104,6 @@ This package is structured identically to [Implement_OVSCAN](https://github.com/
     year={2024}
 }
 ```
-
-## Contributors
-
-- [nautel](https://github.com/nautel) - Implementation and experiments
-- [Claude Code](https://claude.ai/code) (Anthropic) - Code review, testing, and deployment
 
 ## License
 
