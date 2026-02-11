@@ -3,7 +3,7 @@
 Non-official implementation of [OpenSight (ECCV 2024)](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/11118.pdf).
 
 > **OpenSight: A Simple Open-Vocabulary Framework for LiDAR-Based Object Detection**
-> Hu Zhang et al. | [Paper](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/11118.pdf) | [Official Code](https://github.com/huzhangcs/OpenSight)
+> Hu Zhang et al. | [Paper](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/11118.pdf) 
 
 ```
 Image Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
