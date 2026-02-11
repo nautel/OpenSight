@@ -100,7 +100,7 @@ This package is structured identically to [Implement_OVSCAN](https://github.com/
 | Feature | OpenSight | OV-SCAN |
 |---------|-----------|---------|
 | Clustering | Region Growing (KDTree + BFS) | DBSCAN depth clustering |
-| BBox Fitting | Extremal (ConvexHull + min area rect) | SC-NOD PSO / UltraFast grid search |
+| BBox Fitting | Extremal (ConvexHull + min area rect) | SC-NOD PSO  |
 | Temporal | Cross-frame projection + missed recovery | None |
 | Spatial | Object Bank + augmentation | None |
 | Best mAP | 21.53% | 24.40% |
