@@ -10,14 +10,28 @@ Image Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 -> Ground Filter -> 3D NMS -> Temporal Fusion -> Spatial Awareness -> Submission JSON
 ```
 
-## Results (NuScenes v1.0-mini, mini_train)
+## Results 
+
+### BBOX seeker only (our implementation)
+Dataset: Nuscenes v1.0-mini
 
 | Method | mAP | NDS | car | ped | cone | Speed |
 |--------|-----|-----|-----|-----|------|-------|
 | **[OV-SCAN SC-NOD](https://github.com/nautel/OVSCAN)** | **24.40%** | **24.70%** | **28.1%** | **45.4%** | 46.4% | ~27s/sample |
 | **[OpenSight](https://github.com/nautel/OpenSight)** | 21.53% | 23.47% | 21.9% | 41.0% | **55.5%** | **~1.3s/sample** |
 
+
 Pre-computed submission files (.json) are included in `results/submissions/`.
+
+### BBOX seeker + Train (paper results)
+Dataset: Nuscenes v1.0-trainval
+
+| Method | mAP | NDS | 
+|--------|-----|-----|
+| **OV-SCAN** | **31.1%** | **32.8%** | 
+| **OpenSight** | 22.9% | 23.47% |
+
+
 
 ## Setup
 
@@ -80,19 +94,6 @@ OpenSight/
 │   └── sam3_masks/      # Compressed masks (included, 26MB)
 └── results/             # Pre-computed submission
 ```
-
-## Comparison with OV-SCAN
-
-This package is structured identically to [Implement_OVSCAN](https://github.com/nautel/OVSCAN) for side-by-side comparison. Key differences:
-
-| Feature | OpenSight | OV-SCAN |
-|---------|-----------|---------|
-| Clustering | Region Growing (KDTree + BFS) | DBSCAN depth clustering |
-| BBox Fitting | Extremal (ConvexHull + min area rect) | SC-NOD PSO  |
-| Temporal | Cross-frame projection + missed recovery | None |
-| Spatial | Object Bank + augmentation | None |
-| Best mAP | 21.53% | 24.40% |
-| Speed | ~1.3s/sample | ~27s/sample |
 
 ## Citation
 
