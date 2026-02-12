@@ -12,7 +12,7 @@ Image Masks + NuScenes LiDAR -> Point-in-Mask -> Region Growing -> Extremal BBox
 
 ## Results 
 
-### BBOX seeker only (our implementation)
+### Our implementation: BBOX seeker only
 Dataset: Nuscenes v1.0-mini
 
 | Method | mAP | NDS | car | ped | cone | Speed |
@@ -23,15 +23,13 @@ Dataset: Nuscenes v1.0-mini
 
 Pre-computed submission files (.json) are included in `results/submissions/`.
 
-### BBOX seeker + Train (paper results)
+### Paper results: BBOX seeker + Train
 Dataset: Nuscenes v1.0-trainval
 
 | Method | mAP | NDS | 
 |--------|-----|-----|
 | **OV-SCAN** | **31.1%** | **32.8%** | 
 | **OpenSight** | 22.9% | 23.47% |
-
-
 
 ## Setup
 
